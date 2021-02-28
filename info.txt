@@ -1,0 +1,51 @@
+urls
+
+?tz=Europe/Madrid,America/New_York
+    show actual hour in Europe/Madrid and America/New_York
+?tz=Europe/Madrid,America/New_York,Europe/Moscow
+    show actual hour in Europe/Madrid, America/New_York and Europe/Moscow
+?tz=Europe/Madrid,user
+    show actual hour in Europe/Madrid and the time zone of user
+
+?dt=2010,10,22&tzdt=Europe/Madrid&tz=Europe/Madrid,user
+    show date 2010-10-22 in Europe/Madrid tz and the time zone of user
+?dt=2010,10,22,10,10,10&tz=Europe/Madrid,user
+    show date 2010-10-22 10:10:10 in Europe/Madrid tz and the time zone of user
+?dt=2010,10,22,10,10,10&tz=Europe/Madrid,user,America/New_York
+    show date 2010-10-22 10:10:10 in Europe/Madrid tz, the time zone of user and America/New_York
+
+?txt=information event&dt=2010,10,22,10,10,10&tz=Europe/Madrid,user,America/New_York
+    show date 2010-10-22 10:10:10 in Europe/Madrid tz with text, the time zone of user and America/New_York
+
+?dt=2021,10,22&p=y&tz=Europe/Madrid,user
+    show the next year of date with month 10 and day 22 in Europe/Madrid tz and the time zone of user
+?dt=2021,10,22&p=m&tz=Europe/Madrid,user
+    show the next month of date with month day 22 in Europe/Madrid tz and the time zone of user
+?dt=2021,10,22&p=d&tz=Europe/Madrid,user
+    show the next day of date with hour 10 in Europe/Madrid tz and the time zone of user
+?dt=2021,10,22&p=w&tz=Europe/Madrid,user
+    show the next day of date with periodicity weekly in Europe/Madrid tz and the time zone of user
+
+
+txt  -> text event
+dt   -> define date time (default now)
+dttz -> time zone for a dt
+p    -> periodicity (default none) ["y", "m", "d", "w"]
+tz   -> time zones
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+page
+
+- option to select list time zones

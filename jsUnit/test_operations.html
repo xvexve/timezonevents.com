@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+
+    <script src="functions.js" type="text/javascript"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="generic">
+    <select name="tz"></select>
+    <div id="url"><input type="text"></div>
+    <div id="clocks"></div>
+</div>
+
+<script src="http://tz.local.com/js/functions.js" type="text/javascript"></script>
+<script src="http://tz.local.com/js/lang.js" type="text/javascript"></script>
+<script src="http://tz.local.com/js/tz.js" type="text/javascript"></script>
+<script src="http://tz.local.com/js/clock.js" type="text/javascript"></script>
+<script src="http://tz.local.com/js/operation.js" type="text/javascript"></script>
+
+<div>
+    getValuesFromUrl - default
+    <script>
+    const dd=new Date();
+    const operation=new Operation()
+    
+    let result=operation.getValuesFromUrl("http://tz.local.com/")
+    equal(
+        "",
+        operation.values["txt"]
+    );
+    equal(
+        undefined,
+        operation.values["dt"]
+    );
+    equal(
+        "",
+        operation.values["p"]
+    );
+    </script>
+</div>
+
+<div>
+    getValuesFromUrl - txt
+    <script>
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa");
+    equal(
+        "casa",
+        operation.values["txt"]
+    );
+    equal(
+        undefined,
+        operation.values["dt"]
+    );
+    equal(
+        "",
+        operation.values["p"]
+    );
+    </script>
+</div>
+
+<div>
+    getValuesFromUrl - dt
+    <script>
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&dt=2020,10,10,10,10,10");
+    equal(
+        "casa",
+        operation.values["txt"]
+    );
+    equal(
+        2020,
+        operation.values["dt"].getFullYear()
+    );
+    equal(
+        9,
+        operation.values["dt"].getMonth()
+    );
+    equal(
+        10,
+        operation.values["dt"].getDate()
+    );
+    equal(
+        10,
+        operation.values["dt"].getHours()
+    );
+    equal(
+        10,
+        operation.values["dt"].getMinutes()
+    );
+    equal(
+        10,
+        operation.values["dt"].getSeconds()
+    );
+    </script>
+</div>
+
+<div>
+    getValuesFromUrl - dt error
+    <script>
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=mmm&dt=2020,15,10,10,10,10")
+    equal(
+        "mmm",
+        operation.values["txt"]
+    );
+    equal(
+        2021,
+        operation.values["dt"].getFullYear()
+    );
+    equal(
+        2,
+        operation.values["dt"].getMonth()
+    );
+    equal(
+        10,
+        operation.values["dt"].getDate()
+    );
+    equal(
+        10,
+        operation.values["dt"].getHours()
+    );
+    equal(
+        10,
+        operation.values["dt"].getMinutes()
+    );
+    equal(
+        10,
+        operation.values["dt"].getSeconds()
+    );
+    </script>
+</div>
+
+<div>
+    getValuesFromUrl - p
+    <script>
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa")
+    equal(
+        "casa",
+        operation.values["txt"]
+    );
+    equal(
+        "",
+        operation.values["p"]
+    );
+
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&p=1")
+    equal(
+        "",
+        operation.values["p"]
+    );
+
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&p=w")
+    equal(
+        "w",
+        operation.values["p"]
+    );
+    </script>
+</div>
+
+<div>
+    getValuesFromUrl - tz
+    <script>
+    result=operation.getValuesFromUrl("http://tz.local.com/")
+    equal(
+        "user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+        operation.values["tz"]
+    );
+
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&tz=casa")
+    equal(
+        "user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+        operation.values["tz"]
+    );
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&tz=America/New_York , Europe/Lo ndon")
+    equal(
+        "America/New_York,Europe/London",
+        operation.values["tz"]
+    );
+    result=operation.getValuesFromUrl("http://tz.local.com/?txt=casa&tz=America/New_York,Europe/L ondon,Europ e/London")
+    equal(
+        "America/New_York,Europe/London",
+        operation.values["tz"]
+    );
+    </script>
+</div>
+
+<div>
+    showUrl()
+    <script>
+        ulr=operation.getValuesFromUrl("http://tz.local.com/").createUrl();
+        equal(
+            "?tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola").createUrl();
+        equal(
+            "?txt=hola&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola&dt=2010,10,10").createUrl();
+        equal(
+            "?txt=hola&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola&dt=2010,10,10,10,10,10").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola&dt=2010,10,10,10,10,10&p=x").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola&dt=2010,10,10,10,10,10&p=w").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&p=w&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?tz=America/New_York&txt=hola&dt=2010,10,10,10,10,10&p=w").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&p=w&tz=America/New_York",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?tz=America/Ne w_York&txt=hola&dt=2010,10,10,10,10,10&p=w").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&p=w&tz=America/New_York",
+            url
+        );
+
+        ulr=operation.getValuesFromUrl("http://tz.local.com/?txt=hola&dt=2010,10,10,10,10,10&p=w&tz=America/Naw_York").createUrl();
+        equal(
+            "?txt=hola&dt=2010,9,0,10,10,10&p=w&tz=user,America/New_York,Europe/London,Europe/Moscow,Asia/Tokyo",
+            url
+        );
+
+    </script>
+    
+</div>
+
+<div>
+    insertTz
+    <script>
+        result=operation.insertTz("Axrica/Dakar");
+        equal(
+            false,
+            result
+        );
+        result=operation.insertTz("Africa/Dakar");
+        equal(
+            true,
+            result
+        );
+        result=operation.insertTz("Africa/Dakar");
+        equal(
+            false,
+            result
+        );
+    </script>
+</div>
+
+<div>
+    removeTz
+    <script>
+        result=operation.removeTz("Axrica/Dakar");
+        equal(
+            false,
+            result
+        );
+        result=operation.removeTz("Africa/Dakar");
+        equal(
+            true,
+            result
+        );
+        result=operation.removeTz("Africa/Dakar");
+        equal(
+            false,
+            result
+        );
+    </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+header {
+    background:url('/logo.png') no-repeat;
+    min-height: 105px;
+    margin-bottom:20px;
+}
+h1 {
+    margin-left:180px;
+}
+
+#zones {
+    margin:20px 0;
+}
+#zones select {
+    width:100%;
+}
+
+#remaining {
+    display:none;
+    margin-bottom:20px;
+    padding: 10px 0;
+    font-size:24px;
+    background-color:#e0ffe4;
+    color:black;
+}
+
+#txt {
+    display:none;
+    text-align:center;
+    padding:20px 0;
+    font-size:20px;
+    color:white;
+    margin-bottom:20px;
+    border:1px solid #e0ffe4;
+    font-family: auto;
+}
+#txt a:link, #txt a:visited, #txt a:hover {
+    color:white;
+}
+
+#clocks {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.clock {
+    position: relative;
+    border:1px solid #eee;
+    margin:5px;
+    text-align: center;
+}
+.clock>div:nth-child(2) {
+    padding:5px;
+}
+
+/* dttz */
+.clock>div:nth-child(3) {
+    padding:5px 0;
+}
+/* dttz */
+.clock>div:last-child {
+    color:grey;
+}
+.clock.dttz {
+    background-color: #e0ffe4;
+    color:black;
+}
+.clock.tzuser {
+    background-color: #e6e7ff;
+    color:black;
+}
+
+
+/* button for close clock */
+.close {
+    position: absolute;
+    right:2px;
+    bottom:-7px;
+    cursor:pointer;
+    padding:0 2px;
+}
+.close::after {
+    content:"\26CC";
+    color:Red;
+    font-size:20px;
+}
+
+
+
+#url {
+    padding-top:20px;
+}
+#url input {
+    width:100%;
+    color:grey;
+}
+#url button {
+    background-color: #005400;
+    color:white;
+    font-size: 16px;
+}
+
+.button {
+    padding:20px;
+    border-radius: 5px;
+}
+
+#createEvent, #editEvent {
+    text-align: center;
+    background-color: #005400;
+    color:white;
+    width: 49%;
+}
+
+
+#new {
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    z-index:1;
+    background-color: #1e1e1e;
+    padding: 10px;
+}
+#new h2 {
+    padding: 20px 0;
+}
+#new>div {
+    margin:20px 0;
+}
+#new select,
+#new input,
+#new textarea {
+    background-color: #e0ffe4;
+    color:black;
+    margin-top:10px;
+}
+
+textarea {
+    height:85px;
+}
+#newListTz {
+    list-style: none;
+    margin:20px auto;
+    border-radius: 5px;;
+    border:1px solid #e0ffe4;
+    max-width: 350px;
+    padding:10px;
+    display:none;
+}
+#newListTz>li {
+    position: relative;
+    margin:2px 0;
+}
+
+#newAddTz {
+    margin-top:10px;
+}
+
+#newAddTz,
+#addTz, 
+#url button {
+    font-size: 16px;
+    margin-left:5px;
+}
+#newCreate,
+#newClose {
+    width: 49%;
+}
+#newCreate {
+    background-color: #005400;
+    color:white;
+}
+
+.info {
+    font-size:15px;
+    margin-left: 10px;
+}
+
+.flex {
+    display: flex;
+}
+.justify {
+    justify-content: space-between;
+}

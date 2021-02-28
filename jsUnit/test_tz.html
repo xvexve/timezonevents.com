@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="functions.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div class="generic">
+    <select name="tz"></select>
+    <script>
+    
+    </script>
+</div>
+
+<script src="http://tz.local.com/js/tz.js" type="text/javascript"></script>
+
+<div>
+    tzList
+    <script>
+    equal(
+        'Africa/Abidjan',
+        tzList[0]
+    );
+    </script>
+</div>
+
+<div>
+    getTzFromString
+    <script>
+    equal(
+        '',
+        getTzFromString("casa")
+    );
+    equal(
+        'America/New_York',
+        getTzFromString("America/New_York")
+    );
+
+    equal(
+        'America/New_York,Africa/Accra',
+        getTzFromString("America/New_York, Africa/Accra")
+    );
+    equal(
+        'America/New_York,Africa/Accra',
+        getTzFromString("America/New_York, notexist/xaa,Africa/Accra")
+    );
+    </script>
+</div>
+
+<div>
+    checkIfTzExistsInString
+    <script>
+    equal(
+        true,
+        checkIfTzExistsInString('America/New_York', "America/New_York")
+    );
+    equal(
+        true,
+        checkIfTzExistsInString('America/New_York,Africa/Dakar,Africa/Accra', "Africa/Dakar")
+    );
+    equal(
+        true,
+        checkIfTzExistsInString('America/New_York,Africa/Accra,Africa/Dakar', "Africa/Dakar")
+    );
+    equal(
+        false,
+        checkIfTzExistsInString('America/New_York', "America/New_Yor")
+    );
+    equal(
+        false,
+        checkIfTzExistsInString('America', "America/New_York")
+    );
+    equal(
+        false,
+        checkIfTzExistsInString('America', "America")
+    );
+
+    equal(
+        true,
+        checkIfTzExistsInString('Amer ica/N ew_York', "America/New_York")
+    );
+    </script>
+</div>
+
+<div>
+    checkIfTzExists
+    <script>
+    equal(
+        true,
+        checkIfTzExists('America/New_York')
+    );
+    equal(
+        false,
+        checkIfTzExists('America/New_Yor')
+    );
+    </script>
+</div>
+
+</body>
+</html>
+

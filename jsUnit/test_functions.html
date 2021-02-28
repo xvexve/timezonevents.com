@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="functions.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div class="generic">
+    <select name="tz"></select>
+    <script>
+    
+    </script>
+</div>
+
+<script src="http://tz.local.com/js/functions.js" type="text/javascript"></script>
+
+<div>
+    getURLParameters
+    <script>
+    result=getURLParameters("http://t.com?casa=pepe&avion=azul con")
+    equal(
+        'pepe',
+        result.casa
+    );
+    equal(
+        'azul con',
+        result.avion
+    );
+    </script>
+</div>
+
+<div>
+    formatTimer
+    <script>
+    equal(
+        '00D 00H 00M 10S',
+        formatTimer(10)
+    );
+    equal(
+        '00D 00H 01M 00S',
+        formatTimer(60)
+    );
+    equal(
+        '00D 01H 00M 00S',
+        formatTimer(3600)
+    );
+    equal(
+        '00D 00H 16M 40S',
+        formatTimer(1000)
+    );
+    equal(
+        '11D 13H 46M 40S',
+        formatTimer(1000000)
+    );
+    equal(
+        '11574D 01H 46M 40S',
+        formatTimer(1000000000)
+    );
+    </script>
+</div>
+
+<div>
+    getNextDay
+    <script>
+    now=new Date();
+    dt=new Date(2020, 9, 1, 1, 10, 10)
+    newDt=getNextDay(dt);
+    equal(
+        now.getDate()+1,
+        newDt.getDate()
+    );
+    equal(
+        now.getMonth(),
+        newDt.getMonth()
+    );
+    equal(
+        now.getFullYear(),
+        newDt.getFullYear()
+    );
+
+    newDt=getNextDay("casa");
+    equal(
+        new Date().getDate(),
+        newDt.getDate()-1
+    );
+    </script>
+</div>
+
+<div>
+    getNextWeek
+    <script>
+    dt=new Date(2020, 9, 1, 10, 10, 10)
+    newDt=getNextWeek(dt);
+    equal(
+        25,
+        newDt.getDate()
+    );
+    equal(
+        now.getMonth(),
+        newDt.getMonth()
+    );
+    equal(
+        now.getFullYear(),
+        newDt.getFullYear()
+    );
+
+    newDt=getNextWeek("casa");
+    equal(
+        new Date().getDate(),
+        newDt.getDate()-7
+    );
+    </script>
+</div>
+
+<div>
+    getNextMonth
+    <script>
+    dt=new Date(2020, 9, 1, 10, 10, 10)
+    newDt=getNextMonth(dt);
+    equal(
+        1,
+        newDt.getDate()
+    );
+    equal(
+        now.getMonth()+1,
+        newDt.getMonth()
+    );
+    equal(
+        now.getFullYear(),
+        newDt.getFullYear()
+    );
+
+    newDt=getNextMonth("casa");
+    equal(
+        new Date().getMonth(),
+        newDt.getMonth()-1
+    );
+    </script>
+</div>
+
+<div>
+    getNextYear
+    <script>
+    dt=new Date(2010, 0, 1, 10, 10, 10)
+    newDt=getNextYear(dt);
+    equal(
+        1,
+        newDt.getDate()
+    );
+    equal(
+        0,
+        newDt.getMonth()
+    );
+    equal(
+        now.getFullYear()+1,
+        newDt.getFullYear()
+    );
+
+    newDt=getNextYear("casa");
+    equal(
+        new Date().getFullYear(),
+        newDt.getFullYear()-1
+    );
+    </script>
+</div>
+
+<div>
+    formatText
+    <script>
+    equal(
+        "casa",
+        formatText("casa")
+    );
+    equal(
+        "casa&lt;azul&gt;",
+        formatText("casa<azul>")
+    );
+    equal(
+        "casa&lt;azul&gt;&lt;azul&gt;",
+        formatText("casa<azul><azul>")
+    );
+    equal(
+        "casa<br>azul",
+        formatText("casa<br>azul")
+    );
+    equal(
+        "casa<br>azul",
+        formatText("casa<br/>azul")
+    );
+    equal(
+        "casa<br>azul<br>azul",
+        formatText("casa<br>azul<br>azul")
+    );
+    equal(
+        "casa<br>azul",
+        formatText("casa\nazul")
+    );
+    equal(
+        "casa<br>azul<br>azul<br>azul",
+        formatText("casa<br>azul<br/>azul\nazul")
+    );
+    equal(
+        "casa <a href=\"http://www.co.com\" target=\"_blank\">http://www.co.com</a> azul",
+        formatText("casa http://www.co.com azul")
+    );
+    equal(
+        "casa <a href=\"http://www.co.com\" target=\"_blank\">http://www.co.com</a> azul<br><a href=\"https://co.es\" target=\"_blank\">https://co.es</a> !!",
+        formatText("casa http://www.co.com azul\nhttps://co.es !!")
+    );
+    </script>
+</div>
+
+<div>
+    unformatText
+    <script>
+    equal(
+        "casa",
+        unformatText("casa")
+    );
+    equal(
+        "casa<azul>",
+        unformatText("casa&lt;azul&gt;")
+    );
+    equal(
+        "casa<azul><azul>",
+        unformatText("casa&lt;azul&gt;&lt;azul&gt;")
+    );
+    equal(
+        "casa\nazul",
+        unformatText("casa<br>azul")
+    );
+    equal(
+        "casa<br/>azul",
+        unformatText("casa<br/>azul")
+    );
+    equal(
+        "casa\nazul\nazul",
+        unformatText("casa<br>azul<br>azul")
+    );
+    equal(
+        "casa\nazul",
+        unformatText("casa\nazul")
+    );
+    equal(
+        "casa http://www.co.com azul",
+        unformatText("casa <a href=\"http://www.co.com\" target=\"_blank\">http://www.co.com</a> azul")
+    );
+    equal(
+        "casa http://www.co.com azul\nhttps://co.es !!",
+        unformatText("casa <a href=\"http://www.co.com\" target=\"_blank\">http://www.co.com</a> azul<br><a href=\"https://co.es\" target=\"_blank\">https://co.es</a> !!")
+    );
+    </script>
+</div>
+
+</body>
+</html>
+

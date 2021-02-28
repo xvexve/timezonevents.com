@@ -1,0 +1,11 @@
+/* cualquier dispositivo con un maximo de 480px de anchura */
+@media only screen and (max-width: 479px) {
+    header {
+        background-position:center top;
+    }
+    h1 {
+        margin-left: 0;
+        padding-top:105px;
+        text-align: center;
+    }
+}

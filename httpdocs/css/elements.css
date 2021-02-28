@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:18px;
+    background-color: #1e1e1e;
+    color:white;
+}
+
+html,body {
+    height:100%;
+}
+/* Div que engloba el contenido de la página menos el footer */
+main {
+    padding:10px 10px 0 10px;
+    min-height:100%;
+    overflow: auto;
+    padding-bottom: 60px;
+}
+
+h1 {
+    font-size:32px;
+    padding: 20px 0;
+    color:white;
+    font-family: serif;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+
+
+input[type=text],
+input[type=date],
+input[type=time],
+textarea,
+select {
+    border:1px solid #e0ffe4;
+    padding:10px;
+    font-size: 18px;
+    width:100%;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color:#e0ffe4;
+}
+
+input[type=date],
+input[type=time] {
+    width:49%;
+}
+
+input:disabled {
+    border-color:#e0ffe4;
+    border-width: 1px;
+}
+
+button {
+    font-size: 18px;
+    cursor:pointer;
+    border:1px solid grey;
+    border-radius: 5px;
+    padding:0 10px;
+    background-color:#e0ffe4;
+}
+
+footer {
+    position: relative;
+    margin-top: -40px;
+    height: 40px;
+    padding:5px 0px;
+    text-align: center;
+    color:#c586ab;
+    font-size:16px;
+}

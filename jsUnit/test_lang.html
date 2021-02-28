@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+
+    <script src="http://tz.local.com/js/lang.js" type="text/javascript"></script>
+
+    <script src="functions.js" type="text/javascript"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="generic">
+    <script>
+    
+    </script>
+</div>
+
+<div>
+    tzl.getText()
+    <script>
+    equal(
+        "",
+        tzl.getText("notExists")
+    );
+    equal(
+        "en",
+        tzl.changeLanguage("en")
+    );
+    equal(
+        "Time in other time zone",
+        tzl.getText("h1")
+    );
+    </script>
+</div>
+
+<div>
+    tzl.changeLanguage()
+    <script>
+    equal(
+        "es",
+        tzl.changeLanguage("es")
+    );
+    equal(
+        "El tiempo en otra zona horaria",
+        tzl.getText("h1")
+    );
+    equal(
+        "en",
+        tzl.changeLanguage("nz")
+    );
+    equal(
+        "Time in other time zone",
+        tzl.getText("h1")
+    );
+    </script>
+</div>
+
+</body>
+</html>
