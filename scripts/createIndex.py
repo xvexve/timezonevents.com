@@ -62,6 +62,7 @@ replace={
     "getNextYear":"_F7",
     "formatText":"_F8",
     "unformatText":"_F9",
+    "formatOffsetTz":"_F10",
 
     "getTzUser":"_T1",
     "tzSelect":"_T2",

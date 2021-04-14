@@ -8,25 +8,6 @@ const tzList=['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Al
  */
 const getTzUser = () => new Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-// show tz in the select
-const tzSelect=document.querySelector("select[name=tz]");
-const newAddDttz=document.querySelector("select[name=newAddDttz]");
-const newAddTz=document.querySelector("select[name=newAddTz]");
-const createOption = (text, selected) => {
-    let o=document.createElement("option");
-    o.value=text;
-    o.textContent=text;
-    if (text==selected) {
-        o.selected=true;
-    }
-    return o;
-};
-tzList.forEach(t => {
-    tzSelect.appendChild(createOption(t));
-    newAddDttz.appendChild(createOption(t, getTzUser()));
-    newAddTz.appendChild(createOption(t));
-});
-
 /**
  * Function that receive a string with several or one time zone separated
  * by comma and return the same string without spaces and with tz that are
@@ -81,14 +62,17 @@ const getDateForTimezone = (timezone, date) => {
 
 /**
  * Funcion para devolver la diferencia horaria de una zona horaria
- * o false si la zona horaria no existe.
+ * con relación a la zona del usuario o false si la zona horaria no
+ * existe.
  *
- * @param  {string} timezone - una zona horaria (America/New_York)
+ * @param {string}  timezone - una zona horaria (America/New_York)
+ * @param {boolean} utc      - (default false). Determina si la diferencia
+ *                           horaria en relación a UTC
  * 
  * @return {integer|false}   - devuelve los segundos o false
  */
-const getOffsetTimezone = timezone => {
-    const tz = getDateForTimezone(getTzUser(), new Date());
+const getOffsetTimezone = (timezone, utc=false) => {
+    const tz = getDateForTimezone(utc ? "UTC" : getTzUser(), new Date());
     const tzDate = getDateForTimezone(timezone, new Date());
     return tz && tzDate ? (tzDate - tz)/1000 : false;
 };
@@ -109,3 +93,23 @@ const getNowForTimezone = timezone => {
         return false;
     }
 };
+
+// show tz in the select
+const tzSelect=document.querySelector("select[name=tz]");
+const newAddDttz=document.querySelector("select[name=newAddDttz]");
+const newAddTz=document.querySelector("select[name=newAddTz]");
+const createOption = (text, selected) => {
+    let o=document.createElement("option");
+    o.value=text;
+    o.textContent=text+" ("+formatOffsetTz(getOffsetTimezone(text, true))+")";
+    if (text==selected) {
+        o.selected=true;
+    }
+    return o;
+};
+tzList.forEach(t => {
+    tzSelect.appendChild(createOption(t));
+    newAddDttz.appendChild(createOption(t, getTzUser()));
+    newAddTz.appendChild(createOption(t));
+});
+

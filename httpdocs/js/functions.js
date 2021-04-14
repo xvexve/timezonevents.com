@@ -34,7 +34,8 @@ const getURLParameters = url => (
 );
 
 /**
- * Function to retur a formater number
+ * Function to return a formater number for show "time left"
+ * 
  * @param {integer} s seconds
  */
 const formatTimer = s => {
@@ -48,6 +49,16 @@ const formatTimer = s => {
     return Object.entries(time)
         .map(([key, val]) => LeadingZero(val)+key)
         .join(" ");
+};
+
+const formatOffsetTz = s => {
+    const time = {
+        H: Math.floor(s / 3600) % 24,
+        M: Math.floor(s / 60) % 60,
+    };
+    return Object.entries(time)
+        .map(([k, v], i) => i ? LeadingZero(v) : v)
+        .join(":");
 };
 
 /**
