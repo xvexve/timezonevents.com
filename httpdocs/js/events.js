@@ -20,20 +20,28 @@ document.querySelector("#url button").addEventListener("click", function() {
 // form add new event
 document.getElementById("createEvent").addEventListener("click", () => {
     clear();
-    document.getElementById("new").style.display="block";
-    document.querySelector("textarea[name=txt]").focus();
+    showNew();
 });
 document.getElementById("editEvent").addEventListener("click", () => {
     edit();
-    document.getElementById("new").style.display="block";
-    document.querySelector("textarea[name=txt]").focus();
+    showNew();
 });
-document.getElementById("newClose").addEventListener("click", () => document.getElementById("new").style.display="none");
+document.getElementById("newClose").addEventListener("click", () => hideNew());
 document.getElementById("newCreate").addEventListener("click", createUrl);
 document.getElementById("newAddTz").addEventListener("click", newAddTzToList);
 
 document.addEventListener("keyup", (e) => {
-    if (e.keyCode==27) {
-        document.getElementById("new").style.display="none";
+    if (e.key=="Escape") {
+        hideNew();
     }
 });
+
+const showNew = () => {
+    document.getElementById("new").style.display="block";
+    document.querySelector("main").style.display="none";
+    document.querySelector("textarea[name=txt]").focus();
+};
+const hideNew = () => {
+    document.getElementById("new").style.display="none";
+    document.querySelector("main").style.display="block";
+};

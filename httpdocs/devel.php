@@ -29,61 +29,61 @@
 <body>
     <main>
         <header>
-            <h1></h1>
+            <h1><?php echo gText("phpH1");?></h1>
         </header>
         <div id="txt"></div>
-        <h2 id="remaining"><span></span><span></span></h2>
+        <h2 id="remaining"><span><?php echo gText("phpRemainig");?></span><span></span></h2>
         <div id="clocks"></div>
         <div id="zones" class="flex">
             <select name="tz">
-                <option value=""></option>
+                <option value=""><?php echo gText("phpTzOption");?></option>
             </select>
-            <button id="addTz"></button>
+            <button id="addTz"><?php echo gText("phpAddTz");?></button>
         </div>
         <div class="flex justify">
-            <button class='button' id="createEvent"></button><button class='button' id="editEvent"></button>
+            <button class='button' id="createEvent"><?php echo gText("phpCreateEvent");?></button><button class='button' id="editEvent"><?php echo gText("phpEditEvent");?></button>
         </div>
-        <div id="url" class="flex"><input type="text" disabled><button></button></div>
-        <div class='info'></div>
+        <div id="url" class="flex"><input type="text" disabled><button><?php echo gText("phpCopyUrl");?></button></div>
+        <div class='info'><?php echo gText("phpInfoCopyUrl");?></div>
     </main>
 
     <div id="new">
-        <h2></h2>
+        <h2><?php echo gText("phpH2");?></h2>
         <div>
-            <span class='txt'></span>
+            <span class='txt'><?php echo gText("phpNewText");?></span>
             <textarea name="txt"></textarea>
         </div>
         <div>
-            <span class='newAddDttz'></span>
+            <span class='newAddDttz'><?php echo gText("phpNewDttz");?></span>
             <select name="newAddDttz">
                 <option value=""></option>
             </select>
         </div>
         <div>
-            <span class='date'></span> <div class='flex justify'><input type="date" name="date"><input type="time" name="time"></div>
+            <span class='date'><?php echo gText("phpNewDate");?></span> <div class='flex justify'><input type="date" name="date"><input type="time" name="time"></div>
         </div>
         <div>
-            <span class="newPeriodicity"></span>
+            <span class="newPeriodicity"><?php echo gText("phpNewPeridicity");?></span>
             <select name="newPeriodicity">
-                <option value=""></option>
-                <option value="d"></option>
-                <option value="w"></option>
-                <option value="m"></option>
-                <option value="y"></option>
+                <option value=""><?php echo gText("phpNewPeridicityEmpty");?></option>
+                <option value="d"><?php echo gText("phpNewPeridicityD");?></option>
+                <option value="w"><?php echo gText("phpNewPeridicityW");?></option>
+                <option value="m"><?php echo gText("phpNewPeridicityM");?></option>
+                <option value="y"><?php echo gText("phpNewPeridicityY");?></option>
             </select>
         </div>
         <div>
-            <span class='newAddTz'></span>
+            <span class='newAddTz'><?php echo gText("phpNewTz");?></span>
             <div class="flex">
                 <select name="newAddTz">
-                    <option value=""></option>
+                    <option value=""><?php echo gText("phpTzOption");?></option>
                 </select>
-                <button id="newAddTz"></button>
+                <button id="newAddTz"><?php echo gText("phpNewTz");?></button>
             </div>
             <ul id="newListTz"></ul>
         </div>
         <div class="flex justify">
-            <button class='button' id="newCreate"></button> <button class='button' id="newClose"></button>
+            <button class='button' id="newCreate"><?php echo gText("phpNewCreate");?></button> <button class='button' id="newClose"><?php echo gText("phpNewClose");?></button>
         </div>
     </div>
 
@@ -97,7 +97,6 @@
 <script src="js/functions.js"></script>
 <script src="js/tz.js"></script>
 <script src="js/newTz.js"></script>
-<script src="js/lang.js"></script>
 <script src="js/clock.js"></script>
 <script src="js/operation.js"></script>
 <script src="js/events.js"></script>

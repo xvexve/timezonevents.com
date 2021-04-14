@@ -35,18 +35,18 @@ replace={
     " || ":"||",
     " && ":"&&",
 
-    #"addTz":"_K",
-    #"createEvent":"_L",
-    #"editEvent":"_M",
-    #"newAddDttz":"_N",
-    #"newPeriodicity":"_O",
-    #"newAddTz":"_P",
+    "addTz":"_K",
+    "createEvent":"_L",
+    "editEvent":"_M",
+    "newAddDttz":"_N",
+    "newPeriodicity":"_O",
+    "newAddTz":"_P",
     "newListTz":"_Q",
-    #"newCreate":"_R",
-    #"newClose":"_S",
-    "seconds":"_S",
-    "minutes":"_T",
-    "hours":"_U",
+    "newCreate":"_R",
+    "newClose":"_S",
+    "seconds":"_T",
+    "minutes":"_U",
+    "hours":"_V",
 
     "userLangBrowser":"_L1",
     "_checkLanguage":"_L2",
@@ -106,6 +106,9 @@ replace={
     "insertTz":"_O6",
     "removeTz":"_O7",
     "params":"_O8",
+
+    "showNew":"_E1",
+    "hideNew":"_E2",
 
 }
 for k,v in replace.items():
