@@ -111,6 +111,11 @@ replace={
     "showNew":"_E1",
     "hideNew":"_E2",
 
+    "layersToMoveUp":"_U1",
+    "setLayer":"_U2",
+    "layers":"_U3",
+    "newLayer":"_U4",
+    "newUp":"_U5",
 }
 for k,v in replace.items():
     htmlFile=htmlFile.replace(k, v)
@@ -122,4 +127,3 @@ with open(index, 'w') as f:
 
 print(f"html size start: {startSize}")
 print(f"html size end  : {os.path.getsize(index)}")
-

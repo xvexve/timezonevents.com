@@ -47,43 +47,45 @@
         <div class='info'><?php echo gText("phpInfoCopyUrl");?></div>
     </main>
 
-    <div id="new">
-        <h2><?php echo gText("phpH2");?></h2>
+    <div id="new" class="moveUp">
         <div>
-            <span class='txt'><?php echo gText("phpNewText");?></span>
-            <textarea name="txt"></textarea>
-        </div>
-        <div>
-            <span class='newAddDttz'><?php echo gText("phpNewDttz");?></span>
-            <select name="newAddDttz">
-                <option value=""></option>
-            </select>
-        </div>
-        <div>
-            <span class='date'><?php echo gText("phpNewDate");?></span> <div class='flex justify'><input type="date" name="date"><input type="time" name="time"></div>
-        </div>
-        <div>
-            <span class="newPeriodicity"><?php echo gText("phpNewPeridicity");?></span>
-            <select name="newPeriodicity">
-                <option value=""><?php echo gText("phpNewPeridicityEmpty");?></option>
-                <option value="d"><?php echo gText("phpNewPeridicityD");?></option>
-                <option value="w"><?php echo gText("phpNewPeridicityW");?></option>
-                <option value="m"><?php echo gText("phpNewPeridicityM");?></option>
-                <option value="y"><?php echo gText("phpNewPeridicityY");?></option>
-            </select>
-        </div>
-        <div>
-            <span class='newAddTz'><?php echo gText("phpNewTz");?></span>
-            <div class="flex">
-                <select name="newAddTz">
-                    <option value=""><?php echo gText("phpTzOption");?></option>
-                </select>
-                <button id="newAddTz"><?php echo gText("phpNewTz");?></button>
+            <h2><?php echo gText("phpH2");?></h2>
+            <div>
+                <span class='txt'><?php echo gText("phpNewText");?></span>
+                <textarea name="txt"></textarea>
             </div>
-            <ul id="newListTz"></ul>
-        </div>
-        <div class="flex justify">
-            <button class='button' id="newCreate"><?php echo gText("phpNewCreate");?></button> <button class='button' id="newClose"><?php echo gText("phpNewClose");?></button>
+            <div>
+                <span class='newAddDttz'><?php echo gText("phpNewDttz");?></span>
+                <select name="newAddDttz">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div>
+                <span class='date'><?php echo gText("phpNewDate");?></span> <div class='flex justify'><input type="date" name="date"><input type="time" name="time"></div>
+            </div>
+            <div>
+                <span class="newPeriodicity"><?php echo gText("phpNewPeridicity");?></span>
+                <select name="newPeriodicity">
+                    <option value=""><?php echo gText("phpNewPeridicityEmpty");?></option>
+                    <option value="d"><?php echo gText("phpNewPeridicityD");?></option>
+                    <option value="w"><?php echo gText("phpNewPeridicityW");?></option>
+                    <option value="m"><?php echo gText("phpNewPeridicityM");?></option>
+                    <option value="y"><?php echo gText("phpNewPeridicityY");?></option>
+                </select>
+            </div>
+            <div>
+                <span class='newAddTz'><?php echo gText("phpNewTz");?></span>
+                <div class="flex">
+                    <select name="newAddTz">
+                        <option value=""><?php echo gText("phpTzOption");?></option>
+                    </select>
+                    <button id="newAddTz"><?php echo gText("phpNewTz");?></button>
+                </div>
+                <ul id="newListTz"></ul>
+            </div>
+            <div class="flex justify">
+                <button class='button' id="newCreate"><?php echo gText("phpNewCreate");?></button> <button class='button' id="newClose"><?php echo gText("phpNewClose");?></button>
+            </div>
         </div>
     </div>
 
@@ -99,6 +101,7 @@
 <script src="js/newTz.js"></script>
 <script src="js/clock.js"></script>
 <script src="js/operation.js"></script>
+<script src="js/layerUp.js"></script>
 <script src="js/events.js"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW58RTTPDS"></script>

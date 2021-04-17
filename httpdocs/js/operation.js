@@ -118,11 +118,11 @@ class Operation {
         let v=this.values;
         let text="?";
 
-        text+=v.txt ? `txt=${v.txt}&` : "";
         text+=v.dt ? `dt=${v.dt.getFullYear()},${v.dt.getMonth()+1},${v.dt.getDate()},${v.dt.getHours()},${v.dt.getMinutes()},${v.dt.getSeconds()}&` : "";
         text+=v.dttz ? `dttz=${v.dttz}&` : "";
         text+=v.p ? `p=${v.p}&` : "";
         text+=v.tz ? `tz=${v.tz}&` : "";
+        text+=v.txt ? `txt=${v.txt}&` : "";
 
         return domain+text.slice(0, -1);
     }

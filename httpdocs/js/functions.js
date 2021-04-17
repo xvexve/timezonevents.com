@@ -8,6 +8,7 @@ const _H = s => d.querySelector(s);
 const _I = s => d.querySelectorAll(s);
 const _J = e => d.createElement(e);
 
+
 /**
  * Function para inserter ceros o cualquier caracter delante de un numero
  * 

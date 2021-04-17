@@ -26,22 +26,18 @@ document.getElementById("editEvent").addEventListener("click", () => {
     edit();
     showNew();
 });
-document.getElementById("newClose").addEventListener("click", () => hideNew());
+document.getElementById("newClose").addEventListener("click", () => newUp.hide());
 document.getElementById("newCreate").addEventListener("click", createUrl);
 document.getElementById("newAddTz").addEventListener("click", newAddTzToList);
 
 document.addEventListener("keyup", (e) => {
     if (e.key=="Escape") {
-        hideNew();
+        newUp.hide();
     }
 });
 
 const showNew = () => {
-    document.getElementById("new").style.display="block";
-    document.querySelector("main").style.display="none";
-    document.querySelector("textarea[name=txt]").focus();
-};
-const hideNew = () => {
-    document.getElementById("new").style.display="none";
-    document.querySelector("main").style.display="block";
+    newUp.show();
+    document.documentElement.scrollTo(0,0);
+    setTimeout(() => document.querySelector("textarea[name=txt]").focus(), 500);
 };
