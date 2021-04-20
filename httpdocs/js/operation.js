@@ -122,7 +122,7 @@ class Operation {
         text+=v.dttz ? `dttz=${v.dttz}&` : "";
         text+=v.p ? `p=${v.p}&` : "";
         text+=v.tz ? `tz=${v.tz}&` : "";
-        text+=v.txt ? `txt=${v.txt}&` : "";
+        text+=v.txt ? `txt=${unformatText(v.txt, false)}&` : "";
 
         return domain+text.slice(0, -1);
     }

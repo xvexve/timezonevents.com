@@ -145,8 +145,8 @@ const formatText = txt => {
     return txt.replace(/(https?:\/\/(www\.[\w\.\-]+\.[a-z]{2,}[\/\w\.\-]*|[^www\.][\w\.\-]+\.[a-z]{2,}[\/\w\.\-]*))/gi, '<a href="$1" target="_blank">$1</a>');
 };
 
-const unformatText = txt => {
-    const replace={"&lt;":"<", "&gt;":">", "<br>":"\n"};
+const unformatText = (txt, br=true) => {
+    const replace=br ? {"&lt;":"<", "&gt;":">", "<br>":"\n"} : {"&lt;":"<", "&gt;":">", "<br>":"<br>"};
     txt=txt.replace(/&lt;|&gt;|<br>/g, function(e) {return replace[e]});
     return txt.replace(/(<a href="[\w\._\-:\/]+" target="_blank">|<\/a>)/gi, "");
 };
